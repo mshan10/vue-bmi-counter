@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-      <h1>{{ "hI" | capitalize }}</h1>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+      <!-- <h1>{{ "hI" | capitalize }}</h1> -->
     <HelloWorld msg="welcome to Your Vue.js App"/>
   </div>
 </template>
