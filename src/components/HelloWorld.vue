@@ -3,7 +3,18 @@
     <!-- Potential annual savings -->
     <mdc-layout-grid class="report">
       <mdc-layout-cell span=6>
-        <mdc-display>{{ savings1 | currency }} <span v-if="mode"> - {{ savings2 | currency }}</span></mdc-display>
+        <mdc-display>
+          <ICountUp
+            :endVal="savings1"
+            :options="options"
+          /> 
+          <span v-if="mode"> - 
+            <ICountUp
+              :endVal="savings2"
+              :options="options"
+            />
+          </span>
+        </mdc-display>
       </mdc-layout-cell>
       <mdc-layout-cell span=6>
         <mdc-headline>Average Potential Annual Savings</mdc-headline>
@@ -22,15 +33,15 @@
     <h3 >Enter benefit details</h3>
     <mdc-layout-grid>
       <mdc-layout-cell span=6>
-        <mdc-textfield v-model="total_enrolled" v-on:input="calculateBA" outline/>
+        <mdc-textfield v-model="total_enrolled" v-on:input="calculateBA" outline helptext="Total Enrolled Dependent Count" helptext-persistent/>
       </mdc-layout-cell>
       <mdc-layout-cell span=6>
-        <mdc-textfield v-model="average_cost" v-on:input="calculateBA" outline/>
+        <mdc-textfield v-model="average_cost" v-on:input="calculateBA" outline helptext="Average Cost per Dependent" helptext-persistent/>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Button choices -->
     <mdc-layout-grid>
-      <mdc-layout-cell>
+      <mdc-layout-cell align="middle">
         <mdc-button raised v-on:click="changeMode(0)">Below Average</mdc-button>
       </mdc-layout-cell>
       <mdc-layout-cell>
@@ -44,20 +55,35 @@
 </template>
 
 <script>
+import ICountUp from 'vue-countup-v2';
 export default {
   name: 'HelloWorld',
+  components: {
+    ICountUp
+  },
   props: {
     msg: String
   },
   data: function(){
     return {
-      total_enrolled: 0,
-      average_cost: 0,
+      total_enrolled: "0",
+      average_cost: "0",
       removed1: 0,
       removed2: 0,
       savings1: 0,
       savings2: 0,
-      mode: 0
+      mode: 0,
+      // endVal: 120500,
+      options: {
+        useEasing: true,
+        useGrouping: true,
+        separator: ',',
+        decimal: '.',
+        prefix: '$',
+        suffix: '',
+        decimalPlaces: 2,
+        duration: 2
+      }
     }
   },
   methods: {
@@ -98,5 +124,10 @@ a {
 }
 .report {
   text-align: left;
+}
+.mdc-button {
+  width: 70%;
+  /* height: 50px; */
+  padding: 20px 20px 35px 20px;
 }
 </style>
