@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-      <!-- <h1>{{ "hI" | capitalize }}</h1> -->
-    <HelloWorld msg="welcome to Your Vue.js App"/>
+    <Calculate/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import ICountUp from 'vue-countup-v2';
+import Calculate from './components/calculate.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Calculate
   }
 }
 </script>
@@ -24,6 +21,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

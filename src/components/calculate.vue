@@ -2,7 +2,7 @@
   <div class="calculator">
     <!-- Potential annual savings -->
     <mdc-layout-grid class="report">
-      <mdc-layout-cell span=6>
+      <mdc-layout-cell span=6 align="middle">
         <mdc-display>
           <ICountUp
             :endVal="savings1"
@@ -16,28 +16,27 @@
           </span>
         </mdc-display>
       </mdc-layout-cell>
-      <mdc-layout-cell span=6>
+      <mdc-layout-cell span=6 align="middle">
         <mdc-headline>Average Potential Annual Savings</mdc-headline>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Ineligible dependents -->
     <mdc-layout-grid class="report">
-      <mdc-layout-cell span=6>
+      <mdc-layout-cell span=6 align="middle">
         <mdc-display>{{ removed1.toFixed() }} <span v-if="mode"> - {{ removed2.toFixed() }}</span></mdc-display>
       </mdc-layout-cell>
-      <mdc-layout-cell span=6>
+      <mdc-layout-cell span=6 align="middle">
         <mdc-headline>Average Ineligile Dependents</mdc-headline>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Enter details -->
-    
+    <h3 class="benefit">Enter benefit details</h3>
     <mdc-layout-grid>
       <mdc-layout-cell span=6>
-        <h3 >Enter benefit details</h3>
-        <mdc-textfield v-model="total_enrolled" v-on:input="calculateBA" outline helptext="Total Enrolled Dependent Count" helptext-persistent/>
+        <mdc-textfield class="input" v-model="total_enrolled" v-on:input="calculateBA" outline helptext="Total Enrolled Dependent Count" helptext-persistent/>
       </mdc-layout-cell>
       <mdc-layout-cell span=6>
-        <mdc-textfield style="padding-top: 16px;" v-model="average_cost" v-on:input="calculateBA" outline helptext="Average Cost per Dependent" helptext-persistent/>
+        <mdc-textfield class="input" v-model="average_cost" v-on:input="calculateBA" outline helptext="Average Cost per Dependent" helptext-persistent/>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Button choices -->
@@ -58,12 +57,9 @@
 <script>
 import ICountUp from 'vue-countup-v2';
 export default {
-  name: 'HelloWorld',
+  name: 'Calculate',
   components: {
     ICountUp
-  },
-  props: {
-    msg: String
   },
   data: function(){
     return {
@@ -74,7 +70,6 @@ export default {
       savings1: 0,
       savings2: 0,
       mode: 0,
-      // endVal: 120500,
       options: {
         useEasing: true,
         useGrouping: true,
@@ -83,7 +78,7 @@ export default {
         prefix: '$',
         suffix: '',
         decimalPlaces: 2,
-        duration: 2
+        duration: 1
       },
       buttons: {
         below : false,
@@ -150,17 +145,24 @@ a {
   background-color: #0056A4 !important;
 }
 .calculator {
-  padding: 50px 21%;
-  max-width: 50%;
-  /* color: blue; */
+  padding: 0 15%;
+  /* max-width: 50%; */
 }
 .report {
-  text-align: center;
+  text-align: left;
+  color: #0056A4;
+  padding-left: 40px; 
+}
+.benefit {
+  text-align: left;
+  margin-left: 40px;
   color: #0056A4;
 }
+.input {
+  width: 90%;
+}
 .mdc-button {
-  width: 70%;
-  /* height: 50px; */
-  padding: 20px 20px 35px 20px;
+  width: 80%;
+  height: 50px;
 }
 </style>
