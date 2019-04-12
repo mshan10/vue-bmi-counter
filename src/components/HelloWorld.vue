@@ -19,12 +19,13 @@
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Enter details -->
-    <h3 >Enter benefit details</h3>
+    
     <mdc-layout-grid>
       <mdc-layout-cell span=6>
+        <h3 >Enter benefit details</h3>
         <mdc-textfield v-model="total_enrolled" v-on:input="calculateBA" outline/>
       </mdc-layout-cell>
-      <mdc-layout-cell span=6>
+      <mdc-layout-cell span=6 style="padding-top: 16px;">
         <mdc-textfield v-model="average_cost" v-on:input="calculateBA" outline/>
       </mdc-layout-cell>
     </mdc-layout-grid>
@@ -57,7 +58,14 @@ export default {
       removed2: 0,
       savings1: 0,
       savings2: 0,
-      mode: 0
+      mode: 0,
+      buttons: {
+        below : false,
+
+        average: false,
+
+        above: false
+      }
     }
   },
   methods: {
@@ -71,6 +79,25 @@ export default {
     changeMode: function(num) {
       this.mode = num
       this.calculateBA()
+    },
+    buttonColor: function(num){
+      switch(num){
+        case 1:
+          this.buttons.below = true;
+          this.buttons.average = false;
+          this.buttons.above = false;
+          break;
+        case 2:
+          this.buttons.below = false;
+          this.buttons.average = true;
+          this.buttons.above = false;
+          break;
+        case 3:
+          this.buttons.below = false;
+          this.buttons.average = false;
+          this.buttons.above = true;
+          break;
+      }
     }
   }
 }
@@ -92,11 +119,19 @@ li {
 a {
   color: #42b983;
 }
+.mdc-button{
+  background-color: #D8D8D8 !important;
+}
+.mdc-button:hover{
+  background-color: #0056A4 !important;
+}
 .calculator {
-  padding: 50px 200px;
+  padding: 50px 21%;
+  max-width: 50%;
   /* color: blue; */
 }
 .report {
-  text-align: left;
+  text-align: center;
+  color: #0056A4;
 }
 </style>
