@@ -17,7 +17,7 @@
         </mdc-display>
       </mdc-layout-cell>
       <mdc-layout-cell span=6 align="middle">
-        <mdc-headline>Average Potential Annual Savings</mdc-headline>
+        <mdc-headline>{{mode_name[mode]}} Potential Annual Savings</mdc-headline>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Ineligible dependents -->
@@ -26,7 +26,7 @@
         <mdc-display>{{ removed1.toFixed() }} <span v-if="mode"> - {{ removed2.toFixed() }}</span></mdc-display>
       </mdc-layout-cell>
       <mdc-layout-cell span=6 align="middle">
-        <mdc-headline>Average Ineligile Dependents</mdc-headline>
+        <mdc-headline>{{mode_name[mode]}} Ineligile Dependents</mdc-headline>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Enter details -->
@@ -84,7 +84,12 @@ export default {
         below : false,
         average: false,
         above: false
-      }
+      },
+      mode_name: [
+        'Below Average',
+        'Average',
+        'Above Average'
+      ]
     }
   },
   methods: {
@@ -164,5 +169,8 @@ a {
 .mdc-button {
   width: 80%;
   height: 50px;
+}
+.mdc-display {
+  font-size: 50px;
 }
 </style>
