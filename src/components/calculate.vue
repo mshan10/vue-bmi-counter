@@ -42,13 +42,13 @@
     <!-- Button choices -->
     <mdc-layout-grid>
       <mdc-layout-cell align="middle">
-        <mdc-button raised v-on:click="changeMode(0)">Below Average</mdc-button>
+        <mdc-button v-bind:class="{ active: mode == 0 }" raised v-on:click="changeMode(0)">Below Average</mdc-button>
       </mdc-layout-cell>
       <mdc-layout-cell>
-        <mdc-button raised v-on:click="changeMode(1)">Average</mdc-button>
+        <mdc-button v-bind:class="{ active: mode == 1 }" raised v-on:click="changeMode(1)">Average</mdc-button>
       </mdc-layout-cell>
       <mdc-layout-cell>
-        <mdc-button raised v-on:click="changeMode(2)">Above Average</mdc-button>
+        <mdc-button v-bind:class="{ active: mode == 2 }" raised v-on:click="changeMode(2)">Above Average</mdc-button>
       </mdc-layout-cell>
     </mdc-layout-grid>
   </div>
@@ -172,5 +172,8 @@ a {
 }
 .mdc-display {
   font-size: 50px;
+}
+.active {
+  background-color: #0056A4 !important;
 }
 </style>
