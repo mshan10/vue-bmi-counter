@@ -26,7 +26,7 @@
         <mdc-display>{{ removed1.toFixed() }} <span v-if="mode"> - {{ removed2.toFixed() }}</span></mdc-display>
       </mdc-layout-cell>
       <mdc-layout-cell span=6 align="middle">
-        <mdc-headline>{{mode_name[mode]}} Ineligile Dependents</mdc-headline>
+        <mdc-headline>{{mode_name[mode]}} Ineligible Dependents</mdc-headline>
       </mdc-layout-cell>
     </mdc-layout-grid>
     <!-- Enter details -->
@@ -98,7 +98,7 @@ export default {
       this.removed2 = this.total_enrolled * .05 * this.mode
       this.savings1 = this.removed1 * this.average_cost
       this.savings2 = (!this.mode) ? 0 : (this.removed2 * this.average_cost)
-      console.log("add numbers")
+      // console.log("add numbers")
     },
     changeMode: function(num) {
       this.mode = num
